@@ -2,13 +2,16 @@
 
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
+import TestCardPage from './components/TestCardPage'
 
 import MenuBar from './components/MenuBar'
 
 function App() {
   return (
-   
-      <MenuBar/>
+      <div>
+        <MenuBar/>
+        <TestCardPage />
+      </div>
    
       
   );
