@@ -1,6 +1,6 @@
 import React from 'react'; 
-import {MovieApi} from '../MovieApi'; 
-import Card from './Card'; 
+import { Grid, Card } from 'semantic-ui-react';
+import MovieCard from './MovieCard' 
 
 
 export default class TestCardPage extends React.Component {
@@ -23,13 +23,19 @@ export default class TestCardPage extends React.Component {
     }   
 
     render () {
-        const movieCards = this.state.movies.map(movie => <Card {...movie} key={movie.id} />)
+        const movieCards = this.state.movies.map(movie => <MovieCard {...movie} key={movie.id} />)
  
         return (
 
-          <div>
-                {movieCards}
-            </div>
+            <Grid>
+                <Grid.Row className='page-title'>
+                    <Grid.Column>
+                        <Card.Group stackable itemsPerRow={4}>
+                            {movieCards}
+                        </Card.Group>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
 
     
             
