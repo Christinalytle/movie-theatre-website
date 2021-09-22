@@ -1,29 +1,44 @@
-import React from 'react'; 
+import React, {useState, useEffect} from 'react'; 
 import { Grid, Card } from 'semantic-ui-react';
 import MovieCard from './MovieCard' 
+import axios from 'axios'; 
 
 
-export default class TestCardPage extends React.Component {
-    constructor() {
-        super(); 
-        this.state = {
-            movies: []
+export default function TestCardPage(){
+    // constructor() {
+    //     super(); 
+    //     this.state = {
+    //         movies: []
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     this.setState({loading:true})
+    //     fetch("http://localhost:8080/movies")
+    //      .then(response => response.json())
+    //      .then(data => {
+    //          this.setState({
+    //              movies: data
+    //          })
+    //      })
+    // }   
+
+        const [movies, setMovies] = useState([]); 
+
+        useEffect(() => {
+            getMovies()
+        },[]); 
+
+
+        async function getMovies() {
+            await axios("http://localhost:8080/movies")
+            .then((response) => {
+                setMovies(response.data)
+            })
         }
-    }
 
-    componentDidMount() {
-        this.setState({loading:true})
-        fetch("http://localhost:8080/movies")
-         .then(response => response.json())
-         .then(data => {
-             this.setState({
-                 movies: data
-             })
-         })
-    }   
-
-    render () {
-        const movieCards = this.state.movies.map(movie => <MovieCard {...movie} key={movie.id} />)
+    
+        const movieCards =  movies.map(movie => <MovieCard {...movie} key={movie.id} />)
  
         return (
 
@@ -41,6 +56,6 @@ export default class TestCardPage extends React.Component {
             
 
         )
-    }
+    
 
 }
