@@ -5,23 +5,7 @@ import axios from 'axios';
 
 
 export default function TestCardPage(){
-    // constructor() {
-    //     super(); 
-    //     this.state = {
-    //         movies: []
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     this.setState({loading:true})
-    //     fetch("http://localhost:8080/movies")
-    //      .then(response => response.json())
-    //      .then(data => {
-    //          this.setState({
-    //              movies: data
-    //          })
-    //      })
-    // }   
+     
 
         const [movies, setMovies] = useState([]); 
 
@@ -52,10 +36,6 @@ export default function TestCardPage(){
                 </Grid.Row>
             </Grid>
 
-    
-            
-
         )
-    
 
 }
